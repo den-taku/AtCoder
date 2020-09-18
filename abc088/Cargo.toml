@@ -1,0 +1,15 @@
+[package]
+name = "abc088"
+version = "0.1.0"
+authors = ["DenTaku <dentaku1412@gmail.com>"]
+edition = "2018"
+
+# dependencies added to new project
+[dependencies]
+proconio = "*"
+argio = "0.1.2"
+competitive = { git = "https://github.com/tanakh/competitive-rs.git" }
+
+[profile.release]
+lto = true
+panic = 'abort'
