@@ -11,7 +11,7 @@ fn main() {
         _p: [[usize; 50]; 50]
     }
     let mut answer = "".to_string();
-    for _ in 0..141000 {
+    for _ in 0..20000 {
         let mut visited = HashSet::new();
         visited.insert((si, sj));
         for e in same(&t, (si, sj)) {
