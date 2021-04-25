@@ -2,16 +2,21 @@ use proconio::{input, source::once::OnceSource};
 use rand::Rng;
 use std::collections::HashSet;
 
+fn scoring(p: &Vec<Vec<usize>>, point: (usize, usize)) -> usize {
+    p[point.0][point.1]
+}
+
 fn main() {
     input! {
-        // from OnceSource::from(source()),
+        from OnceSource::from(source()),
         si: usize,
         sj: usize,
         t: [[usize; 50]; 50],
-        _p: [[usize; 50]; 50]
+        p: [[usize; 50]; 50]
     }
     let mut answer = "".to_string();
-    for _ in 0..145000 {
+    let mut ans_score = 0;
+    for _ in 0..140000 {
         let mut visited = HashSet::new();
         visited.insert((si, sj));
         for e in same(&t, (si, sj)) {
@@ -20,6 +25,9 @@ fn main() {
 
         let mut point = (si, sj);
         let mut ans = "".to_string();
+
+        let mut score = 0;
+        score += scoring(&p, point);
 
         let mut rng = rand::thread_rng();
         if rng.gen() {};
@@ -42,10 +50,12 @@ fn main() {
                 ans = ans + "L";
             }
             point = new_point;
+            score += scoring(&p, point);
         }
 
-        if answer.len() < ans.len() {
+        if ans_score < score {
             answer = ans;
+            ans_score = score;
         }
     }
     println!("{}", answer);
