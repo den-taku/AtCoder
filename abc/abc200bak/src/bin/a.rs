@@ -1,5 +1,6 @@
-use proconio::input;
+use proconio::{input, fastout};
 
+#[fastout]
 fn main() {
     input! {
             n: isize,
